@@ -1,5 +1,5 @@
-
-[
+{
+"records": [
     {"id":1,"title":"Hello", "description":"Welcome to Noted", "favourite":true, "created":null},
     {"id":2,"title":"Hi", "description":"This is Noted", "favourite":true, "created":null},
     {"id":3,"title":"Zero", "description":"0 invented by Aryabhatta", "favourite":false, "created":null},
@@ -7,3 +7,4 @@
     {"id":5,"title":"Two", "description":"Double sided", "favourite":false, "created":null},
     {"id":6,"title":"Three", "description":"Triangle has three sides", "favourite":false, "created":null}
 ]
+}
