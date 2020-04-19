@@ -24,12 +24,26 @@ export class AppComponent implements OnInit{
   public descriptionE:string = ""; 
   public errorMsg:string = "";
   public titleErr:boolean=false;
+  public mobile:boolean = false;
+  public divHide:boolean = false;
 
   constructor(private _noteD: NoteService, private http: HttpClient){}
 
   ngOnInit() {
     this.getNote();
+    console.log(window.screen.width);
+    if(window.screen.width<=576){
+      this.mobile = true;
+      this.divHide = false;
+    }
+    else{
+      this.mobile = false;
+      this.divHide = true;
+    }
+  }
 
+  public toggleNotes(){
+    this.divHide = !this.divHide;
   }
 
   //To get error message in case of failed validation 
@@ -39,6 +53,7 @@ export class AppComponent implements OnInit{
     }
   }
 
+  //fetches data from noteservice
   public getNote(){
    this._noteD.getNotes().subscribe(data =>{
       this.noteList = data;
@@ -48,6 +63,8 @@ export class AppComponent implements OnInit{
     );
   }
 
+
+  //to add or remove favorites
   public favoriteBtn(id:number){
     let updateNote:any={};
     updateNote = this.noteList.find(item => item.id == id);
@@ -57,6 +74,8 @@ export class AppComponent implements OnInit{
     });
   }
 
+
+  //to save new notes
   public saveNote(){
     let newNote:any = {};
     this.titleNote.trim();
@@ -81,6 +100,8 @@ export class AppComponent implements OnInit{
     }
   }
 
+
+  //to save existing notes
   public saveNoteE(){
     let editNote:any={};
     this.titleNoteE.trim();
@@ -103,11 +124,15 @@ export class AppComponent implements OnInit{
     
   }
 
+
+  //to display new note div
   public newNote(){
     this.success="";
     this.hideDiv=true;
   }
 
+
+  //to display and start editing existing note
   public noteSelect(id:number){
     this.hideDiv=false;
     this.success="";
@@ -117,6 +142,7 @@ export class AppComponent implements OnInit{
     this.descriptionE = selectedNote.description;
   }
 
+  //to delete note with noteservice
   public deleteN(id:number){
     this._noteD.deleteNote(id).subscribe(data =>{
       this.getNote();

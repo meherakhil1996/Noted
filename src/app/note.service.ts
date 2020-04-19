@@ -17,23 +17,28 @@ export class NoteService {
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) { }
 
+  //to get list of notes
   public getNotes():Observable<INoted[]>{
     return this.http.get<INoted[]>(this._url).pipe(catchError(this.errorHandler));
   }
 
+  //to handle http errors
   public errorHandler(error: HttpErrorResponse){
     return obsThrowError(error.message||"Server Error");
   }
 
+  //to post a new note
   public setNotes(note:INoted){
     return this.http.post<INoted>(this._url,note).pipe(catchError(this.errorHandler));
   }
 
+  //to update an existing note
   public updateNotes(note:INoted){
     let url = this._url+"/"+note.id;
     return this.http.put(url,note).pipe(catchError(this.errorHandler));
   }
 
+  //to delete a note
   public deleteNote(id:number){
     let url = this._url+"/"+id;
     return this.http.delete(url).pipe(catchError(this.errorHandler));

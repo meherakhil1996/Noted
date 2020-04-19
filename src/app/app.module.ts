@@ -5,10 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { environment } from '../environments/environment';
-
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
@@ -23,9 +19,7 @@ import { MaterialModule } from './material/material.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

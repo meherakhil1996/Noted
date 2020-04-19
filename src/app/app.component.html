@@ -1,31 +1,15 @@
 <div class="container-fluid">
   <div class="row mb-4">
     <h3>{{errorMsg}}</h3>
+    <button mat-icon-button class="noteToggle" (click)="toggleNotes()" color="accent" aria-label="menu btn">
+      <mat-icon>menu</mat-icon>
+    </button>
   </div>
 
   <div class="row">
-    <!-- <div class="col-3">
-      <mat-sidenav-container class="sideNotes">
-          <mat-sidenav #sidenav mode="side">
-            Side navigation
-          </mat-sidenav>
-          <mat-sidenav-content >
-            <button mat-icon-button color="primary" (click)="sidenav.toggle()" aria-label="Example icon button with a menu icon">
-              <mat-icon>menu</mat-icon>
-            </button>
-            <mat-card *ngFor="let item of noteList;">
-              <mat-card-title><a class="titleLink" href="javascript:void(0);" (click)="noteSelect(item.id)">{{item.title}}</a></mat-card-title>
-              <mat-card-content>
-                <span class="itemDesc">{{item.description}}</span><br>
-                <span>{{item.created| date:'shortTime'}}</span>
-                
-              </mat-card-content>
-            </mat-card>
-          </mat-sidenav-content>
-      </mat-sidenav-container>
-        
-    </div> -->
-    <div class="col-md-3 d-flex flex-column sideDiv">
+    
+    <div class="col-md-3 sideDiv" [ngStyle]="{'display':divHide==true ? 'none':'block'}" id="noteDiv">
+    
       <mat-card *ngFor="let item of noteList;">
         <mat-card-title>
           <div class="d-flex justify-content-between">
