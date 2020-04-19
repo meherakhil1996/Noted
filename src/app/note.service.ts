@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { INoted} from './noted';
 import { throwError as obsThrowError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Injectable({
@@ -15,7 +14,7 @@ export class NoteService {
   // private _url:string = "https://my-json-server.typicode.com/meherakhil1996/Noted/records";
   private _url:string = "http://localhost:3000/records";
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) { }
+  constructor(private http: HttpClient) { }
 
   //to get list of notes
   public getNotes():Observable<INoted[]>{

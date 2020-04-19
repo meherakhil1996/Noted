@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { NoteService } from './note.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +13,7 @@ export class AppComponent implements OnInit{
   title = 'Noted';
   public noteTitle = new FormControl('', [Validators.required]);
   public noteList = [];
-  private _url:string = "http://localhost:3000/records";
+  
   public hideDiv:boolean = true;
   public selectedId:number=null;
   public success:string="";
