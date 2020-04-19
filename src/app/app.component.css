@@ -5,3 +5,77 @@
     color:white;
     width: 100%;
 }
+
+
+
+.itemDesc{
+    display: inline-block;
+    width: 40%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.titleLink{
+    text-decoration: none;
+    color:white;
+}
+
+.saveBtn{
+    background-color: dodgerblue;
+}
+
+.successMsg{
+    color: green;
+}
+
+.sideDiv{
+    height: 600px;
+    overflow: auto;
+}
+
+/* Media Queries */
+
+@media (max-width: 576px) { 
+
+    .sideDiv{
+        width: 50%;
+    }
+
+    .matForm2{
+        color:white;
+        width: 100%;
+    }
+    .editDiv{
+        width: 50%;
+    }
+
+ }
+
+ @media (max-width: 700px){
+    .sideDiv{
+        width: 50%;
+    }
+
+    .matForm2{
+        color:white;
+        width: 100%;
+    }
+    .editDiv{
+        width: 50%;
+    }
+ }
+
+ @media (max-width: 1080px){
+    .sideDiv{
+        width: 50%;
+    }
+
+    .matForm2{
+        color:white;
+        width: 100%;
+    }
+    .editDiv{
+        width: 50%;
+    }
+ }

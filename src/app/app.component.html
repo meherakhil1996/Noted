@@ -1,17 +1,88 @@
 <div class="container-fluid">
   <div class="row mb-4">
-
+    <h3>{{errorMsg}}</h3>
   </div>
+
   <div class="row">
-    <div class="col-4">
-      <mat-form-field appearance='outline' class="matForm1">
-        <mat-label>Title*</mat-label>
-        <input matInput>
-      </mat-form-field><br>
-      <mat-form-field appearance='outline' class="matForm2">
-        <mat-label>Description</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field>
+    <!-- <div class="col-3">
+      <mat-sidenav-container class="sideNotes">
+          <mat-sidenav #sidenav mode="side">
+            Side navigation
+          </mat-sidenav>
+          <mat-sidenav-content >
+            <button mat-icon-button color="primary" (click)="sidenav.toggle()" aria-label="Example icon button with a menu icon">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <mat-card *ngFor="let item of noteList;">
+              <mat-card-title><a class="titleLink" href="javascript:void(0);" (click)="noteSelect(item.id)">{{item.title}}</a></mat-card-title>
+              <mat-card-content>
+                <span class="itemDesc">{{item.description}}</span><br>
+                <span>{{item.created| date:'shortTime'}}</span>
+                
+              </mat-card-content>
+            </mat-card>
+          </mat-sidenav-content>
+      </mat-sidenav-container>
+        
+    </div> -->
+    <div class="col-md-3 d-flex flex-column sideDiv">
+      <mat-card *ngFor="let item of noteList;">
+        <mat-card-title>
+          <div class="d-flex justify-content-between">
+            <a class="titleLink" href="javascript:void(0);" (click)="noteSelect(item.id)">{{item.title}}</a>
+            <button mat-icon-button [ngStyle]="{'color': item.favourite==false ?'white':'red'}" (click)="favoriteBtn(item.id)" color="warn" aria-label="">
+              <mat-icon>favorite</mat-icon>
+            </button>
+          </div>
+        </mat-card-title>
+        <mat-card-content>
+          <span class="itemDesc">{{item.description}}</span>
+          <div class="d-flex justify-content-between">
+            <span>{{item.created| date:'MMM d,h:mm a'}}</span>
+            <button  class="btn btn-danger btn-sm"  (click)="deleteN(item.id)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-4 editDiv">
+      <button class="mb-3" mat-raised-button color="primary" (click)="newNote()">New Note</button><br>
+      <span class="successMsg m-2">{{success}}</span>
+      <div *ngIf="titleErr" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on Title field below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div *ngIf="hideDiv">
+        <mat-form-field appearance='outline' class="matForm1 m-2">
+          <mat-label>Title</mat-label>
+          <input matInput [formControl]='noteTitle' [(ngModel)]="titleNote" required>
+          <mat-error *ngIf="noteTitle.dirty&&noteTitle.invalid">{{getError()}}</mat-error>
+        </mat-form-field><br>
+        <mat-form-field appearance='outline' class="matForm2 m-2">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="description"></textarea>
+        </mat-form-field>
+        <div class="d-flex justify-content-end">
+          <button class="justify-content-end saveBtn" mat-raised-button (click)="saveNote()" color="primary">SAVE</button>
+        </div>
+      </div>
+      <div class="editDiv" *ngIf="!hideDiv">
+        <mat-form-field appearance='outline' class="matForm1 m-2">
+          <mat-label>Title</mat-label>
+          <input matInput [formControl]='noteTitle' [(ngModel)]="titleNoteE" required>
+          <mat-error *ngIf="noteTitle.invalid">{{getError()}}</mat-error>
+        </mat-form-field><br>
+        <mat-form-field appearance='outline' class="matForm2 m-2">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="descriptionE"></textarea>
+        </mat-form-field>
+        <div class="d-flex justify-content-end">
+          <button class="justify-content-end saveBtn" mat-raised-button (click)="saveNoteE()" color="primary">SAVE</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
