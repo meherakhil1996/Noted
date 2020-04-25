@@ -11,8 +11,8 @@ import { catchError } from 'rxjs/operators';
 export class NoteService {
 
   // private _url:string = "/assets/data/notedata.json";
-  // private _url:string = "https://my-json-server.typicode.com/meherakhil1996/Noted/records";
-  private _url:string = "http://localhost:3000/records";
+  private _url:string = "https://my-json-server.typicode.com/meherakhil1996/Noted/records";
+  // private _url:string = "http://localhost:3000/records";
 
   constructor(private http: HttpClient) { }
 
